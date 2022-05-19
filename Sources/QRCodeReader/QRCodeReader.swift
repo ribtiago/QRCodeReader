@@ -1,12 +1,16 @@
 import SwiftUI
 import SwiftUIExtras
 
-struct QRCodeReader: View {
+public struct QRCodeReader: View {
     
     @ObservedObject private var viewModel = QRCodeReaderViewModel()
-    var receivedResult: (String) -> Void
+    private var receivedResult: (String) -> Void
     
-    var body: some View {
+    init(receivedResult: @escaping (String) -> Void) {
+        self.receivedResult = receivedResult
+    }
+    
+    public var body: some View {
         ZStack(alignment: .bottomLeading) {
             self.viewModel.cameraPreview
                 .ignoresSafeArea()
