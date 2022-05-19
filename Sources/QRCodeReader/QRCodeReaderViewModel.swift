@@ -5,7 +5,7 @@
 import UIKit
 import AVFoundation
 import Combine
-import CameraPreview
+import SwiftUIExtras
 
 class QRCodeReaderViewModel: NSObject, ObservableObject {
     
