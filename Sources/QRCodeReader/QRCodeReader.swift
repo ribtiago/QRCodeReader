@@ -3,7 +3,7 @@ import SwiftUIExtras
 
 public struct QRCodeReader: View {
     
-    @ObservedObject private var viewModel = QRCodeReaderViewModel()
+    @StateObject private var viewModel = QRCodeReaderViewModel()
     private var receivedResult: (String) -> Void
     
     public init(receivedResult: @escaping (String) -> Void) {
