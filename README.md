@@ -3,7 +3,7 @@
 A simple QRCode reader made for SwiftUI
 
 Usage:
-```
+```swift
 import SwiftUI
 import QRCodeReader
 
