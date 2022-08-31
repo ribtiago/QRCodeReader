@@ -36,7 +36,7 @@ class QRCodeReaderViewModel: NSObject, ObservableObject {
         self.captureSession.addOutput(metadataOutput)
 
         metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        metadataOutput.metadataObjectTypes = [.qr]
+        metadataOutput.metadataObjectTypes = [.qr, .pdf417]
         
         self.$isTorchOn
             .sink { [unowned self] isOn in
