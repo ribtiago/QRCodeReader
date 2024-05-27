@@ -18,7 +18,7 @@ class QRCodeReaderViewModel: NSObject, ObservableObject {
     lazy var cameraPreview = CameraPreview(session: self.captureSession)
     var result = PassthroughSubject<String, Never>()
     
-    override init() {
+    init(readerObjectTypes: [AVMetadataObject.ObjectType]) {
         super.init()
         
         self.captureSession.sessionPreset = .high
@@ -36,7 +36,7 @@ class QRCodeReaderViewModel: NSObject, ObservableObject {
         self.captureSession.addOutput(metadataOutput)
 
         metadataOutput.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
-        metadataOutput.metadataObjectTypes = [.qr, .pdf417]
+        metadataOutput.metadataObjectTypes = readerObjectTypes
         
         self.$isTorchOn
             .sink { [unowned self] isOn in

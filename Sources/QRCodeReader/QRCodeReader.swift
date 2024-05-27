@@ -1,12 +1,14 @@
 import SwiftUI
+import AVFoundation
 import SwiftUIExtras
 
 public struct QRCodeReader: View {
     
-    @StateObject private var viewModel = QRCodeReaderViewModel()
+    @StateObject private var viewModel: QRCodeReaderViewModel
     private var receivedResult: (String) -> Void
     
-    public init(receivedResult: @escaping (String) -> Void) {
+    public init(readerTypes: [AVMetadataObject.ObjectType] = [.qr, .pdf417, .aztec], receivedResult: @escaping (String) -> Void) {
+        self._viewModel = StateObject(wrappedValue: QRCodeReaderViewModel(readerObjectTypes: readerTypes))
         self.receivedResult = receivedResult
     }
     
